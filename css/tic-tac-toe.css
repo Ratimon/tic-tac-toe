@@ -1,0 +1,99 @@
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script);
+@import url(http://fonts.googleapis.com/css?family=Ruluko);
+
+body {
+  display: block;
+  padding: 0px;
+  background-color: white;
+  color: white;
+  font-family: 'Open Sans' sans-serif;
+}
+
+p {
+  font-size: 20px;
+  text-shadow: 4px 4px rgb(149,149,149);
+}
+
+.player {
+  display: block;
+  position: relative;
+  text-align: center;
+  width: 39%;
+  height: 800px;
+  margin-right: 5%;
+  margin-left: 5%;
+  opacity: 0.2;
+}
+
+.player:hover {
+  opacity : 0.9;
+}
+
+.side {
+  font-size: 50px;
+  text-shadow: 4px 4px rgb(149,149,149);
+  display: inline;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+
+}
+
+
+#cato {
+  float:left;
+  background-color: rgb(51,204,204);
+  border: rgb(51,204,204);
+  border-radius: 15px;
+}
+
+
+#dogx {
+  float:right;
+  background-color: rgb(153,153,102);
+  border: rgb(153,153,102);
+  border-radius: 15px;
+}
+
+.container {
+  display: block;
+  position: absolute;
+  top: 15%;
+  left: 34.5%;
+  width: 463px;
+  height: 545px;
+  background-color: rgba(149,149,149,0.8);
+  border: 1px solid rgba(149,149,149,0.8);
+  border-radius: 15px;
+}
+
+.reset {
+  display: block;
+  position: absolute;
+  top: 90%;
+  left: 35.5%;
+  width: 30%;
+  height: 8%;
+  text-align: center;
+  background-color: rgba(149,149,149,0.8);
+  border: 1px solid rgba(149,149,149,0.8);
+  border-radius: 15px;
+}
+
+.reset:hover {
+  background-color: grey;
+}
+
+.space {
+  display: inline-block;
+  position: relative;
+  width: 32%;
+  height: 32%;
+  margin: 0 auto;
+  border: 1px solid white;
+}
+
+.img {
+  width: 150px;
+  height: 150px;
+}
