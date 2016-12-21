@@ -93,39 +93,39 @@ var updateTurn = function(elem, symbol){
 
 
 
- var words = $('#words').text().split(/[ ;\-,.\n]+/);
- var $body = $('body');
-
-
- var randy = function( max ) {
-   return Math.floor( Math.random() * max );
- };
-
-
- var putWord = function() {
-
-
-   var randomIndex = randy( words.length );
-   var text = words[randomIndex];
-
-
-   var $div = $('<div class="word">').html( text );
-
-
-   $div.css({
-     top: randy( window.innerHeight ) + 'px',
-     left: randy( window.innerWidth ) + 'px',
-     fontSize: (40 + randy(80)) + 'px'
-   });
-
-   $div.appendTo( $body );
-
-   $div.fadeIn(1000).fadeOut(2000, function(){
-     $(this).remove();
-   });
-
- };
-
- setInterval(putWord, 100);
-
-});
+//  var words = $('#words').text().split(/[ ;\-,.\n]+/);
+//  var $body = $('body');
+//
+//
+//  var randy = function( max ) {
+//    return Math.floor( Math.random() * max );
+//  };
+//
+//
+//  var putWord = function() {
+//
+//
+//    var randomIndex = randy( words.length );
+//    var text = words[randomIndex];
+//
+//
+//    var $div = $('<div class="word">').html( text );
+//
+//
+//    $div.css({
+//      top: randy( window.innerHeight ) + 'px',
+//      left: randy( window.innerWidth ) + 'px',
+//      fontSize: (40 + randy(80)) + 'px'
+//    });
+//
+//    $div.appendTo( $body );
+//
+//    $div.fadeIn(1000).fadeOut(2000, function(){
+//      $(this).remove();
+//    });
+//
+//  };
+//
+//  setInterval(putWord, 100);
+//
+// });
