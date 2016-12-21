@@ -54,14 +54,15 @@ var gd3 = [ "io",   "io",  "io",
 //3. reset || .#restart -- click event
 
 
+
+
+
 var grid = {
 
-// currentplayer is string ( catx or dogo)
-  currentplayer : "",
+
 // count is number of turns in each round
   count : 0,
-// num_round is number of round
-  num_round : 1,
+
 
 //rows is object of array, including positions of all the row
 //interp.
@@ -97,16 +98,6 @@ var grid = {
 // ###########################
 //Functions definitions
 // ###########################
-
-  changeturn : function(){
-     if (this.currentplayer === "cato") {
-       this.currentplayer = "dogx";
-     } else if (this.currentplayer === "dogx") {
-       this.currentplayer = "cato";
-     } else {
-       alert('please choose your side')
-     }
-    },
 
 // string pos -> grid
 //interp. given O or X , it will update the current grid.

@@ -5,8 +5,14 @@ body {
   display: block;
   padding: 0px;
   background-color: white;
-  color: white;
+  color: rgb(24,24,24);
+  text-align: center;
   font-family: 'Open Sans' sans-serif;
+}
+h1 {
+  color: rgb(8,8,8);
+  font-size: 35px;
+
 }
 
 p {
@@ -19,7 +25,7 @@ p {
   position: relative;
   text-align: center;
   width: 39%;
-  height: 800px;
+  height: 600px;
   margin-right: 5%;
   margin-left: 5%;
   opacity: 0.2;
@@ -30,6 +36,7 @@ p {
 }
 
 .side {
+  color: 	rgb(8,8,8);
   font-size: 50px;
   text-shadow: 4px 4px rgb(149,149,149);
   display: inline;
@@ -59,7 +66,7 @@ p {
   display: block;
   position: absolute;
   top: 15%;
-  left: 34.5%;
+  left: 34%;
   width: 463px;
   height: 545px;
   background-color: rgba(149,149,149,0.8);
@@ -96,4 +103,16 @@ p {
 .img {
   width: 150px;
   height: 150px;
+}
+
+#words{
+  display: none; /* hide our block of text, we're just using it as a data source in our Javascipt */
+}
+
+.word{
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: white;
+  display: none;
+  position: absolute;
 }

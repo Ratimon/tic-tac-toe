@@ -1,14 +1,39 @@
 console.log("loaded");
 
+var player = {
+  // currentplayer is string ( catx or dogo)
+    currentplayer : "",
+
+    catname : "cat" ,
+
+    dogname : "dog" ,
+
+  // round is number of round
+    num_round : 1,
+
+    changeturn : function(){
+      debugger;
+       if (this.currentplayer === this.catname) {
+         this.currentplayer = this.dogname;
+       } else if (this.currentplayer === this.dogname) {
+         this.currentplayer = this.catname;
+       } else {
+         alert('please choose your side')
+       }
+      }
+}
+
 $(document).ready(function() {
 
+
+
+
   $('.reset').on('click', function(){
-    debugger
-      var count_round = grid.num_round
+      var count_round = player.num_round
       count_round += 1
-      grid.num_round = count_round;
-      $('h1').text("Round "+grid.num_round)
-      grid.currentplayer = ""
+      player.num_round = count_round;
+      $('h1').text("Round "+player.num_round)
+      player.currentplayer = ""
       grid.resetgrid();
       $('.space').empty();
       $('.space').attr("blank", 'true');
@@ -16,17 +41,21 @@ $(document).ready(function() {
 
   });
 
-
-
+//choose side
   $('.player').on('click', function(){
+    // debugger;
     if ($(this).attr('id')==='cato') {
-      grid.currentplayer = 'cato';
-    } else if ($(this).attr('id')==='dogx') {
-      grid.currentplayer = 'dogx';
+      player.catname = $('#cato').find('input').val()
+      player.currentplayer = player.catname;
+    } else if ($(this).attr('id')==='dogx' ) {
+      player.dogname = $('#dogx').find('input').val()
+      player.currentplayer = player.dogname;
     }
     $(this).css({'opacity' : '1'})
-    $('h1').text("Round "+grid.num_round)
+    $('h1').text("Round "+player.num_round)
   });
+
+
 
 
 var updateTurn = function(elem, symbol){
@@ -38,13 +67,14 @@ var updateTurn = function(elem, symbol){
   grid.makenewgrid('i' + symbol.toLowerCase(), pos);
   winalert(elem)
   drawalert()
-  grid.changeturn();
+  player.changeturn();
 }
 
+
   $('.space').on('click', function(){
-    // debugger;
+    //  debugger;
     if ($(this).attr('blank') === 'true') {
-      if (grid.currentplayer === 'cato') {
+      if (player.currentplayer === player.catname) {
 
         updateTurn(this, 'O');
         $('#dogx').css({'opacity' : '1'})
@@ -58,7 +88,7 @@ var updateTurn = function(elem, symbol){
         // drawalert()
         // grid.changeturn();
 
-      } else if (grid.currentplayer === 'dogx') {
+      } else if (player.currentplayer === player.dogname) {
 
         updateTurn(this, 'X');
         $('#cato').css({'opacity' : '1'})
@@ -80,12 +110,14 @@ var updateTurn = function(elem, symbol){
 
 
   function winalert(elem) {
+    debugger;
     if (grid.iswin()) {
-      alert(grid.currentplayer+" is win");
+      alert(player.currentplayer+" is win");
     }
   }
 
   function drawalert() {
+    debugger;
     if (grid.isdraw()) {
       alert("DRAW ");
     }
