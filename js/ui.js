@@ -1,95 +1,106 @@
 console.log("loaded");
 
+
+
+var gameStarted = false;
+var name1 = ''; //$('#captaino').find('input').val() || 'captain';
+var name2 = ''; //$('#ironmanx').find('input').val() || 'ironman';
+var g = null;   //= G$(name1, name2);
+
+
 $(document).ready(function() {
 
-  $('.reset').on('click', function(){
-    debugger
-      var count_round = grid.num_round
-      count_round += 1
-      grid.num_round = count_round;
-      $('h1').text("Round "+grid.num_round)
-      grid.currentplayer = ""
-      grid.resetgrid();
-      $('.space').empty();
-      $('.space').attr("blank", 'true');
-      $('.player').css({'opacity' : '0.2'});
 
-  });
+// console.log(name1, name2);
 
 
 
   $('.player').on('click', function(){
-    if ($(this).attr('id')==='cato') {
-      grid.currentplayer = 'cato';
-    } else if ($(this).attr('id')==='dogx') {
-      grid.currentplayer = 'dogx';
+
+    if ($(this).attr('id')==='captaino') {
+      // g.currentplayer = name1;
+    } else if ($(this).attr('id')==='ironmanx') {
+      // g.currentplayer = name2;
     }
     $(this).css({'opacity' : '1'})
-    $('h1').text("Round "+grid.num_round)
+    // $('h1').text("Round "+g.num_round)
   });
 
 
-var updateTurn = function(elem, symbol){
+  $('#captaino button').on('click', function () {
+    name1 = $('#captaino input').val() || "Steve";
+    // console.log('captaino click', name1);
+    if(name1.length && name2.length && !gameStarted){
+      // both names are now set
+      // console.log('captaino click start game', name1, name2, name1.length, name2.length);
+       g = G$(name1, name2); //use my library
+       g.currentplayer = name2;
+       startGame();
+     }
+  });
+  $('#ironmanx button').on('click', function () {
+    name2 = $('#ironmanx input').val() || "Tony";
+    // console.log('ironman click', name2);
+    if(name1.length && name2.length && !gameStarted){
+      // both names are now set
+      // console.log('ironman click start game', name1, name2, name1.length, name2.length);
+      g = G$(name1, name2);
+      g.currentplayer = name1;
+      startGame();
+    }
+  });
 
-  var side = "img/" + symbol + ".jpg";
-  var pos = $(elem).data('pos');
-  $(elem).html('<img src='+side+'>')
-  $(elem).attr('blank', 'false');
-  grid.makenewgrid('i' + symbol.toLowerCase(), pos);
-  winalert(elem)
-  drawalert()
-  grid.changeturn();
-}
+  var updateTurn = function(elem, symbol){
 
-  $('.space').on('click', function(){
+    var side = "img/" + symbol + ".png";
+    var pos = $(elem).data('pos');
+    $(elem).html('<img src='+side+'>').attr('blank', 'false');
+    g.makenewgrid('i' + symbol.toLowerCase(), pos).iswin().isdraw().changeturn()
+    $('#captaino').find('.count').text(g.playername[0]+' (Win : '+g.num_win[0]+' Draw : '+g.num_draw+' Loss : '+(g.num_win[1]+')'));
+    $('#ironmanx').find('.count').text(g.playername[1]+' (Win : '+g.num_win[1]+' Draw : '+g.num_draw+' Loss : '+(g.num_win[0]+')'));
+  }
+
+  var startGame = function(){
     // debugger;
-    if ($(this).attr('blank') === 'true') {
-      if (grid.currentplayer === 'cato') {
+    gameStarted = true;
 
-        updateTurn(this, 'O');
-        $('#dogx').css({'opacity' : '1'})
-        $('#cato').css({'opacity' : '0.2'})
-        // var side = "img/O.png";
-        // var pos = $(this).data('pos');
-        // $(this).html('<img src='+side+'>')
-        // $(this).attr('blank', 'false');
-        // grid.makenewgrid('io',pos);
-        // winalert()
-        // drawalert()
-        // grid.changeturn();
+    $('h1').text("Round "+g.num_round)
 
-      } else if (grid.currentplayer === 'dogx') {
+    $('.space').on('click', function(){
+      //  debugger;
+      if ($(this).attr('blank') === 'true') {
+        if (g.currentplayer === name1) {
+          updateTurn(this, 'O');
+          $('#ironmanx').css({'opacity' : '1'})
+          $('#captaino').css({'opacity' : '0.2'})
 
-        updateTurn(this, 'X');
-        $('#cato').css({'opacity' : '1'})
-        $('#dogx').css({'opacity' : '0.2'})
-        // var side = "img/X.png";
-        // var pos = $(this).data('pos');
-        // $(this).html('<img src='+side+'>')
-        // $(this).attr('blank', 'false');
-        // grid.makenewgrid('ix',pos);
-        // winalert()
-        // drawalert()
-        // grid.changeturn();
+        } else if (g.currentplayer === name2) {
+          updateTurn(this, 'X');
+          $('#captaino').css({'opacity' : '1'})
+          $('#ironmanx').css({'opacity' : '0.2'})
 
+        }
       }
-    }
+    });
 
 
-  });
+    $('.reset').on('click', function(){
+        $('h1').text("Round "+g.num_round)
+        // console.log( g.num_win[0]+"and"+g.num_win[1]);
+        g.resetgrid();
+        $('.space').empty().attr("blank", 'true');
+        $('.player').css({'opacity' : '0.2'});
+
+    });
+
+  }; // end startGame()
 
 
-  function winalert(elem) {
-    if (grid.iswin()) {
-      alert(grid.currentplayer+" is win");
-    }
-  }
+ });
 
-  function drawalert() {
-    if (grid.isdraw()) {
-      alert("DRAW ");
-    }
-  }
+
+
+
 
 
 
