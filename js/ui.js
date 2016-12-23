@@ -37,6 +37,7 @@ $(document).ready(function() {
        g.currentplayer = name2;
        startGame();
      }
+     
   });
   $('#ironmanx button').on('click', function () {
     name2 = $('#ironmanx input').val() || "Tony";

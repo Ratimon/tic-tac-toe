@@ -213,7 +213,7 @@
     Grid.init.prototype = Grid.prototype;
 
     // attach our Grid to the global object, and provide a shortcut '$G'
-    Grid.Greetr = global.G$ = Grid;
+    global.Grid = global.G$ = Grid;
 
 }(window, jQuery));
 
