@@ -1,7 +1,5 @@
 console.log("loaded");
 
-
-
 var gameStarted = false;
 var name1 = ''; //$('#captaino').find('input').val() || 'captain';
 var name2 = ''; //$('#ironmanx').find('input').val() || 'ironman';
@@ -12,8 +10,6 @@ $(document).ready(function() {
 
 
 // console.log(name1, name2);
-
-
 
   $('.player').on('click', function(){
 
@@ -37,7 +33,7 @@ $(document).ready(function() {
        g.currentplayer = name2;
        startGame();
      }
-     
+
   });
   $('#ironmanx button').on('click', function () {
     name2 = $('#ironmanx input').val() || "Tony";
@@ -84,7 +80,6 @@ $(document).ready(function() {
       }
     });
 
-
     $('.reset').on('click', function(){
         $('h1').text("Round "+g.num_round)
         // console.log( g.num_win[0]+"and"+g.num_win[1]);
@@ -95,7 +90,6 @@ $(document).ready(function() {
     });
 
   }; // end startGame()
-
 
  });
 

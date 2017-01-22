@@ -48,9 +48,8 @@
 
 
  // ###########################
- //Functions definitions
+ //Methods definitions
  // ###########################
- // Step 1 :identify the methos
 
     // prototype holds methods (to save memory space)
     Grid.prototype = {
@@ -190,22 +189,21 @@
 // the actual object is created here, allowing us to 'new' an object without calling 'new'
     Grid.init = function(player1, player2) {
 
-        var self = this;
-        self.currentgrid   = [ false, false, false,
+        this.currentgrid   = [ false, false, false,
                                false, false, false,
                                false, false, false];
         // currentplayer is string
-        self.playername    = [ player1, player2];
-        self.currentplayer =  "";
-        self.num_win       =  { 0 : 0,
+        this.playername    = [ player1, player2];
+        this.currentplayer =  "";
+        this.num_win       =  { 0 : 0,
                                 1 : 0
                               };
-        self.num_draw      = 0;
+        this.num_draw      = 0;
         // count is number of turns in each round
         //every click add 1 to counter, helpful for isfull function below
-        self.count         = 0;
+        this.count         = 0;
         // num_round is number of rounds
-        self.num_round     = 1;
+        this.num_round     = 1;
 
     }
 
